@@ -2,8 +2,7 @@ package net.kw.heavenonhigh;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.kw.heavenonhigh.block.ModBlocks;
+import net.kw.heavenonhigh.block.OreBlock;
 import net.kw.heavenonhigh.item.Ore;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -35,7 +34,7 @@ public class HeavenOnHigh implements ModInitializer {
 				.strength(4f)
 				.requiresTool()
 				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-		ModBlocks block1 = new ModBlocks(
+		OreBlock block1 = new OreBlock(
 				"pink_garnet_block",
 				block1Settings,
 				new BlockItem(block1Settings, new Item.Settings()),
@@ -47,7 +46,7 @@ public class HeavenOnHigh implements ModInitializer {
 				.strength(4f)
 				.requiresTool()
 				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-		ModBlocks block2 = new ModBlocks(
+		OreBlock block2 = new OreBlock(
 				"raw_pink_garnet_block",
 				block2Settings,
 				new BlockItem(block2Settings, new Item.Settings()),
