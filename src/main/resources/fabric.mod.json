@@ -3,13 +3,13 @@
 	"id": "heavenonhigh",
 	"version": "${version}",
 	"name": "Heaven on High",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A modpack to learn creating mods",
 	"authors": [
-		"Me!"
+		"Kw"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://kew.im/Heaven-on-High",
+		"sources": "https://github.com/kewinrusi20/LearningMods.git"
 	},
 	"license": "MIT",
 	"icon": "assets/heavenonhigh/icon.png",
