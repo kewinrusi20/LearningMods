@@ -14,22 +14,22 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
 public class OreBlock implements ModItem {
-    private final Block blockRegistered;
+    public final Block registration;
 
     public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings, RegistryKey<ItemGroup> itemGroupTab) {
-        this.blockRegistered = registerBlock(id, blockSettings);
+        this.registration = registerBlock(id, blockSettings);
         Item itemRegistered = registerBlockItem(id, blockItemSettings);
 
-        initialize(blockRegistered, itemGroupTab);
+        initialize(registration, itemGroupTab);
 
     }
 
 
     public Block registerBlock(String id, Block settings) {
         Identifier idConverted = Identifier.of(HeavenOnHigh.MOD_ID, id);
-        Block blockRegistered = Registry.register(Registries.BLOCK, idConverted, settings);
+        Block registration = Registry.register(Registries.BLOCK, idConverted, settings);
 
-        return blockRegistered;
+        return registration;
     }
 
 
@@ -41,14 +41,14 @@ public class OreBlock implements ModItem {
     }
 
 
-    public void initialize(Block blockRegistered, RegistryKey<ItemGroup> itemGroupTab) {
+    public void initialize(Block registration, RegistryKey<ItemGroup> itemGroupTab) {
         ItemGroupEvents.
                 modifyEntriesEvent(itemGroupTab)
-                .register(entries -> entries.add(blockRegistered));
+                .register(entries -> entries.add(registration));
     }
 
     @Override
     public ItemStack getItemStack() {
-        return new ItemStack(this.blockRegistered);
+        return new ItemStack(this.registration);
     }
 }

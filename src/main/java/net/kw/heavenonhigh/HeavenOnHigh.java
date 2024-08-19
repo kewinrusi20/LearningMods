@@ -9,9 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,7 @@ public class HeavenOnHigh implements ModInitializer {
     public static final String MOD_ID = "heavenonhigh";
 	//public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public List<Ore> ores = new ArrayList<>();
-	public List<OreBlock> oreBlocks = new ArrayList<>();
+
 
 	public void onInitialize() {
 		Ore pinkGarnet = new Ore(
@@ -62,14 +60,13 @@ public class HeavenOnHigh implements ModInitializer {
 		);
 
 
-		ores.add(pinkGarnet);
-		ores.add(rawPinkGarnet);
+		List<ItemStack> li = new ArrayList<>();
+		li.add(new ItemStack(pinkGarnet.registration));
+		li.add(new ItemStack(rawPinkGarnet.registration));
+		li.add(new ItemStack(pinkGarnetBlock.registration));
+		li.add(new ItemStack(rawPinkGarnetBlock.registration));
 
-		oreBlocks.add(pinkGarnetBlock);
-		oreBlocks.add(rawPinkGarnetBlock);
-
-
-		new ItemGroupTab<>(ores, "itemgroup.heavenonhigh.pink_garnet_items_group");
-		new ItemGroupTab<>(oreBlocks, "itemgroup.heavenonhigh.pink_garnet_blocks_group");
+		ItemGroupTab group1 = new ItemGroupTab(li, "itemgroup.heavenonhigh.pink_garnet_items_group", "0");
+		ItemGroupTab group2 = new ItemGroupTab(li, "itemgroup.heavenonhigh.pink_garnet_blocks_group", "2");
 	}
 }

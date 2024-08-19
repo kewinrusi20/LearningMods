@@ -13,30 +13,24 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-public class ItemGroupTab<T extends ModItem> {
-    ItemGroup itemGroupTab;
+public class ItemGroupTab {
 
-    public ItemGroupTab(List<T> items, String groupName) {
-        this.itemGroupTab = Registry.register(
+    public ItemGroupTab(List<ItemStack> items, String groupName, String iconPosition) {
+        ItemGroup itemGroupTab = Registry.register(
                 Registries.ITEM_GROUP,
                 Identifier.of(HeavenOnHigh.MOD_ID, "pink_garnet_items_group"),
                 FabricItemGroup
                         .builder()
-                        .icon(() -> items.get(0).getItemStack())
+                        .icon(() -> items.get(0))
                         .displayName(Text.translatable(groupName))
                         .entries(((displayContext, entries) -> {
-                            for (T item : items) {
-                                entries.add(item.getItemStack());
+                            for (ItemStack item : items) {
+                                entries.add(item);
                             }
                         }))
                         .build()
         );
     }
 
-    public void addElements() {
-
-
-
-
-    }
+    public void addElements() {}
 }
