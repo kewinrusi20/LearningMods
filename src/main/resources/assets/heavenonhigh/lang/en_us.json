@@ -1,5 +1,10 @@
 {
   "item.heavenonhigh.pink_garnet": "Pink Garnet",
   "item.heavenonhigh.raw_pink_garnet": "Row Pink Garnet",
-  "block.heavenonhigh.pink_garnet_block": "Pink Garnet Block"
+
+  "block.heavenonhigh.pink_garnet_block": "Pink Garnet Block",
+  "block.heavenonhigh.raw_pink_garnet_block": "Raw Pink Garnet Block",
+
+  "itemgroup.heavenonhigh.pink_garnet_items_group": "Pink Garnet Items Group",
+  "itemgroup.heavenonhigh.pink_garnet_blocks_group": "Pink Garnet Blocks Group"
 }
