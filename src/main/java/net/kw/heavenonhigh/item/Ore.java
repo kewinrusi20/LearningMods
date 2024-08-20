@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.kw.heavenonhigh.HeavenOnHigh;
-import net.kw.heavenonhigh.ModItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
-public class Ore implements ModItem {
+public class Ore {
     public final Item registration;
 
     public Ore(String id, Item settings, RegistryKey<ItemGroup> itemGroupTab) {
@@ -42,10 +41,5 @@ public class Ore implements ModItem {
         ItemGroupEvents
                 .modifyEntriesEvent(itemGroupTab)
                 .register((entries) -> entries.add(registration));
-    }
-
-    @Override
-    public ItemStack getItemStack() {
-        return new ItemStack(this.registration);
     }
 }

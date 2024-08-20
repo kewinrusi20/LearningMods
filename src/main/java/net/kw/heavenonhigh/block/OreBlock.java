@@ -2,7 +2,6 @@ package net.kw.heavenonhigh.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.kw.heavenonhigh.HeavenOnHigh;
-import net.kw.heavenonhigh.ModItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -13,7 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
-public class OreBlock implements ModItem {
+public class OreBlock {
     public final Block registration;
 
     public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings, RegistryKey<ItemGroup> itemGroupTab) {
@@ -45,10 +44,5 @@ public class OreBlock implements ModItem {
         ItemGroupEvents.
                 modifyEntriesEvent(itemGroupTab)
                 .register(entries -> entries.add(registration));
-    }
-
-    @Override
-    public ItemStack getItemStack() {
-        return new ItemStack(this.registration);
     }
 }
