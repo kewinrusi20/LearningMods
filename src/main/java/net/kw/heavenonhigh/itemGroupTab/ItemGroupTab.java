@@ -15,13 +15,13 @@ import java.util.List;
 
 public class ItemGroupTab {
 
-    public ItemGroupTab(List<ItemStack> items, String groupName, String iconPosition) {
+    public ItemGroupTab(List<ItemStack> items, String id, String groupName, String iconPosition) {
         ItemGroup itemGroupTab = Registry.register(
                 Registries.ITEM_GROUP,
-                Identifier.of(HeavenOnHigh.MOD_ID, "pink_garnet_items_group"),
+                Identifier.of(HeavenOnHigh.MOD_ID, id),
                 FabricItemGroup
                         .builder()
-                        .icon(() -> items.get(0))
+                        .icon(() -> items.get(Integer.parseInt(iconPosition)))
                         .displayName(Text.translatable(groupName))
                         .entries(((displayContext, entries) -> {
                             for (ItemStack item : items) {

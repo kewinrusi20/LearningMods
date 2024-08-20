@@ -66,7 +66,7 @@ public class HeavenOnHigh implements ModInitializer {
 		li.add(new ItemStack(pinkGarnetBlock.registration));
 		li.add(new ItemStack(rawPinkGarnetBlock.registration));
 
-		ItemGroupTab group1 = new ItemGroupTab(li, "itemgroup.heavenonhigh.pink_garnet_items_group", "0");
-		ItemGroupTab group2 = new ItemGroupTab(li, "itemgroup.heavenonhigh.pink_garnet_blocks_group", "2");
+		ItemGroupTab group1 = new ItemGroupTab(li, "pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group", "0");
+		ItemGroupTab group2 = new ItemGroupTab(li, "pink_garnet_blocks_group", "itemgroup.heavenonhigh.pink_garnet_blocks_group", "2");
 	}
 }
