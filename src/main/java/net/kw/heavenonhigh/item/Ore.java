@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.kw.heavenonhigh.HeavenOnHigh;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -36,10 +37,14 @@ public class Ore {
     }
 
 
-    public void initialize(Item registration, RegistryKey<ItemGroup> itemGroupTab) {
+    public void initialize(Item registration, RegistryKey<ItemGroup> group) {
         // Add Item to a Section
         ItemGroupEvents
-                .modifyEntriesEvent(itemGroupTab)
+                .modifyEntriesEvent(group)
+                .register((entries) -> entries.add(registration));
+
+        ItemGroupEvents
+                .modifyEntriesEvent(ItemGroups.INGREDIENTS)
                 .register((entries) -> entries.add(registration));
     }
 }

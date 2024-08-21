@@ -6,10 +6,8 @@ import net.kw.heavenonhigh.item.Ore;
 import net.kw.heavenonhigh.itemGroupTab.ItemGroupTab;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.ArrayList;
@@ -23,10 +21,13 @@ public class HeavenOnHigh implements ModInitializer {
 
 
 	public void onInitialize() {
+		ItemGroupTab group1 = new ItemGroupTab("pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group");
+		RegistryKey<ItemGroup> itemGroup1_key = group1.itemGroup1_key;
+
 		Ore pinkGarnet = new Ore(
 				"pink_garnet",
 				new Item(new Item.Settings()),
-				ItemGroups.INGREDIENTS);
+				itemGroup1_key);
 
 		Ore rawPinkGarnet = new Ore(
 				"raw_pink_garnet",
@@ -66,7 +67,7 @@ public class HeavenOnHigh implements ModInitializer {
 		li.add(new ItemStack(pinkGarnetBlock.registration));
 		li.add(new ItemStack(rawPinkGarnetBlock.registration));
 
-		ItemGroupTab group1 = new ItemGroupTab(li, "pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group", 0);
-		ItemGroupTab group2 = new ItemGroupTab(li, "pink_garnet_blocks_group", "itemgroup.heavenonhigh.pink_garnet_blocks_group", 2);
+		//ItemGroupTab group1 = new ItemGroupTab(li, "pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group", 0);
+		//ItemGroupTab group2 = new ItemGroupTab(li, "pink_garnet_blocks_group", "itemgroup.heavenonhigh.pink_garnet_blocks_group", 2);
 	}
 }
