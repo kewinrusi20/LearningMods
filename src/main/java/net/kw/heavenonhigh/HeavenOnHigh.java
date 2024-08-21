@@ -11,6 +11,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -30,11 +31,9 @@ public class HeavenOnHigh implements ModInitializer {
 			.strength(4f)
 			.requiresTool()
 			.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-	List<RegistryKey<ItemGroup>> blockGroups = new ArrayList<>(){{
-		add(group1Key);
-		add(ItemGroups.INGREDIENTS);
-		add(ItemGroups.BUILDING_BLOCKS);
-	}};
+	List<RegistryKey<ItemGroup>> blockGroups = new ArrayList<>(List.of(
+
+	));
 
 
 
@@ -49,6 +48,10 @@ public class HeavenOnHigh implements ModInitializer {
 	public void onInitialize() {
 		// set Group
 		group1Key = setGroup(this.group1ID, this.group1Name);
+
+		blockGroups.add(group1Key);
+		blockGroups.add(ItemGroups.INGREDIENTS);
+		blockGroups.add(ItemGroups.BUILDING_BLOCKS);
 
 
 		// Set Item
@@ -91,15 +94,9 @@ public class HeavenOnHigh implements ModInitializer {
 		OreBlock pinkGarnetBlock = new OreBlock(
 				"pink_garnet_block",
 				blockSettings,
-				new BlockItem(blockSettings, new Item.Settings())
+				new BlockItem(blockSettings, new Item.Settings()),
+				blockGroups
 		);
-
-
-//		List<RegistryKey<ItemGroup>> blockGroups = new ArrayList<>();
-//		blockGroups.add(group1Key);
-//		blockGroups.add(ItemGroups.INGREDIENTS);
-//		blockGroups.add(ItemGroups.BUILDING_BLOCKS);
-
 
 		Block pinkGarnetBlock_registration = pinkGarnetBlock.getRegistration();
 		pinkGarnetBlock.initialize(pinkGarnetBlock_registration, blockGroups);

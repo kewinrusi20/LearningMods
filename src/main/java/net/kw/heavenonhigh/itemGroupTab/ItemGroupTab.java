@@ -14,37 +14,32 @@ import java.util.List;
 
 
 public class ItemGroupTab {
-    RegistryKey<ItemGroup> registration;
+    RegistryKey<ItemGroup> groupKey;
 
 
     public ItemGroupTab(String id, String groupName) {
-        this.registration = registerItemGroupTab(id, groupName);
+        this.groupKey = registerItemGroupTab(id, groupName);
     }
 
 
 
     public RegistryKey<ItemGroup> registerItemGroupTab(String id, String groupName) {
-        RegistryKey<ItemGroup> registration = RegistryKey.of(
-                Registries.ITEM_GROUP.getKey(),
-                Identifier.of(
-                        HeavenOnHigh.MOD_ID,
-                        id
-                )
-        );
+        Identifier icConverted = Identifier.of(HeavenOnHigh.MOD_ID, id);
+        RegistryKey<ItemGroup> groupKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), icConverted);
 
         ItemGroup settings = FabricItemGroup
                 .builder()
                 .displayName(Text.translatable(groupName))
                 .build();
 
-        Registry.register(Registries.ITEM_GROUP, registration, settings);
+        Registry.register(Registries.ITEM_GROUP, groupKey, settings);
 
-        return registration;
+        return groupKey;
     }
 
 
 
     public RegistryKey<ItemGroup> getRegistration() {
-        return this.registration;
+        return this.groupKey;
     }
 }

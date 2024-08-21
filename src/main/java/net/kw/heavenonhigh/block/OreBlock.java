@@ -17,7 +17,7 @@ import java.util.List;
 public class OreBlock {
     public final Block registration;
 
-    public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings) {
+    public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings, List<RegistryKey<ItemGroup>> groups) {
         this.registration = registerBlock(id, blockSettings);
         Item itemRegistered = registerBlockItem(id, blockItemSettings);
         //initialize(registration, groups);
