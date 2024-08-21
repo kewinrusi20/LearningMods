@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
+
 public class ItemGroupTab {
     RegistryKey<ItemGroup> registration;
 
@@ -31,21 +32,19 @@ public class ItemGroupTab {
                 )
         );
 
-
         ItemGroup settings = FabricItemGroup
                 .builder()
                 .displayName(Text.translatable(groupName))
                 .build();
-
 
         Registry.register(Registries.ITEM_GROUP, registration, settings);
 
         return registration;
     }
 
+
+
     public RegistryKey<ItemGroup> getRegistration() {
         return this.registration;
     }
-
-
 }

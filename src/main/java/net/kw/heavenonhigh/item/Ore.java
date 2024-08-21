@@ -15,12 +15,13 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
+
 public class Ore {
     public final Item registration;
 
     public Ore(String id, Item settings, List<RegistryKey<ItemGroup>> groups) {
         this.registration = registerItem(id, settings);
-        registry(this.registration);
+        //registry(this.registration);
         initialize(this.registration, groups);
     }
 
@@ -31,24 +32,17 @@ public class Ore {
 
         return registration;
     }
-
-
-    public void registry(Item settings) {
-        FuelRegistry.INSTANCE.add(settings, 30 * 20);
-        CompostingChanceRegistry.INSTANCE.add(settings, 0.3f);
-    }
-
+//    public void registry(Item settings) {
+//        FuelRegistry.INSTANCE.add(settings, 30 * 20);
+//        CompostingChanceRegistry.INSTANCE.add(settings, 0.3f);
+//    }
 
     public void initialize(Item registration, List<RegistryKey<ItemGroup>> groups) {
         // Add Item to a Section
-
         for (RegistryKey<ItemGroup> group : groups) {
             ItemGroupEvents
                     .modifyEntriesEvent(group)
                     .register((entries) -> entries.add(registration));
         }
     }
-
-
-
 }
