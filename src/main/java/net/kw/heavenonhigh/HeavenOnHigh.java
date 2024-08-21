@@ -20,54 +20,59 @@ public class HeavenOnHigh implements ModInitializer {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	public void onInitialize() {
 		ItemGroupTab group1 = new ItemGroupTab("pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group");
-		RegistryKey<ItemGroup> itemGroup1_key = group1.itemGroup1_key;
+		RegistryKey<ItemGroup> itemGroup1_key = group1.getRegistration();
+		List<RegistryKey<ItemGroup>> itemGroups = new ArrayList<>();
+		itemGroups.add(itemGroup1_key);
+		itemGroups.add(ItemGroups.INGREDIENTS);
+
 
 		Ore pinkGarnet = new Ore(
 				"pink_garnet",
 				new Item(new Item.Settings()),
-				itemGroup1_key);
+				itemGroups);
 
 		Ore rawPinkGarnet = new Ore(
 				"raw_pink_garnet",
 				new Item(new Item.Settings()),
-				ItemGroups.INGREDIENTS);
+				itemGroups);
 
 
-		Block block1Settings = new Block(AbstractBlock.Settings
-				.create()
-				.strength(4f)
-				.requiresTool()
-				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-		OreBlock pinkGarnetBlock = new OreBlock(
-				"pink_garnet_block",
-				block1Settings,
-				new BlockItem(block1Settings, new Item.Settings()),
-				ItemGroups.BUILDING_BLOCKS
-		);
-
-
-		Block block2Settings = new Block(AbstractBlock.Settings
-				.create()
-				.strength(4f)
-				.requiresTool()
-				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-		OreBlock rawPinkGarnetBlock = new OreBlock(
-				"raw_pink_garnet_block",
-				block2Settings,
-				new BlockItem(block2Settings, new Item.Settings()),
-				ItemGroups.BUILDING_BLOCKS
-		);
-
-
-		List<ItemStack> li = new ArrayList<>();
-		li.add(new ItemStack(pinkGarnet.registration));
-		li.add(new ItemStack(rawPinkGarnet.registration));
-		li.add(new ItemStack(pinkGarnetBlock.registration));
-		li.add(new ItemStack(rawPinkGarnetBlock.registration));
-
-		//ItemGroupTab group1 = new ItemGroupTab(li, "pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group", 0);
-		//ItemGroupTab group2 = new ItemGroupTab(li, "pink_garnet_blocks_group", "itemgroup.heavenonhigh.pink_garnet_blocks_group", 2);
+//		Block block1Settings = new Block(AbstractBlock.Settings
+//				.create()
+//				.strength(4f)
+//				.requiresTool()
+//				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
+//		OreBlock pinkGarnetBlock = new OreBlock(
+//				"pink_garnet_block",
+//				block1Settings,
+//				new BlockItem(block1Settings, new Item.Settings()),
+//				ItemGroups.BUILDING_BLOCKS
+//		);
+//
+//
+//		Block block2Settings = new Block(AbstractBlock.Settings
+//				.create()
+//				.strength(4f)
+//				.requiresTool()
+//				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
+//		OreBlock rawPinkGarnetBlock = new OreBlock(
+//				"raw_pink_garnet_block",
+//				block2Settings,
+//				new BlockItem(block2Settings, new Item.Settings()),
+//				ItemGroups.BUILDING_BLOCKS
+//		);
 	}
 }

@@ -13,39 +13,17 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 
 public class ItemGroupTab {
-//    public ItemGroupTab(List<ItemStack> items, String id, String groupName, int iconPosition) {
-//        registerItemGroupTab(items, id, groupName, iconPosition);
-//    }
+    RegistryKey<ItemGroup> registration;
 
-    public RegistryKey<ItemGroup> itemGroup1_key;
 
     public ItemGroupTab(String id, String groupName) {
-        registerItemGroupTab(id, groupName);
+        this.registration = registerItemGroupTab(id, groupName);
     }
 
 
 
-//    public void registerItemGroupTab(List<ItemStack> items, String id, String groupName, int iconPosition) {
-//        ItemGroup itemGroup1 = Registry.register(
-//                Registries.ITEM_GROUP,
-//                Identifier.of(HeavenOnHigh.MOD_ID, id),
-//                FabricItemGroup
-//                        .builder()
-//                        .icon(() -> items.get(iconPosition))
-//                        .entries(((displayContext, entries) -> {
-//                            for (ItemStack item : items) {
-//                                entries.add(item);
-//                            }
-//                        }))
-//                        .displayName(Text.translatable(groupName))
-//                        .build()
-//        );
-//    }
-
-
-
-    public void registerItemGroupTab(String id, String groupName) {
-        itemGroup1_key = RegistryKey.of(
+    public RegistryKey<ItemGroup> registerItemGroupTab(String id, String groupName) {
+        RegistryKey<ItemGroup> registration = RegistryKey.of(
                 Registries.ITEM_GROUP.getKey(),
                 Identifier.of(
                         HeavenOnHigh.MOD_ID,
@@ -54,12 +32,20 @@ public class ItemGroupTab {
         );
 
 
-        ItemGroup itemGroup1 = FabricItemGroup
+        ItemGroup settings = FabricItemGroup
                 .builder()
                 .displayName(Text.translatable(groupName))
                 .build();
 
 
-        Registry.register(Registries.ITEM_GROUP, itemGroup1_key, itemGroup1);
+        Registry.register(Registries.ITEM_GROUP, registration, settings);
+
+        return registration;
     }
+
+    public RegistryKey<ItemGroup> getRegistration() {
+        return this.registration;
+    }
+
+
 }
