@@ -45,4 +45,6 @@ public class Ore {
                     .register((entries) -> entries.add(registration));
         }
     }
+
+    public Item getRegistration() { return registration; }
 }
