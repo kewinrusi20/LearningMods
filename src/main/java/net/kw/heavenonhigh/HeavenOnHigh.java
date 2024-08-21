@@ -11,6 +11,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -18,56 +19,86 @@ public class HeavenOnHigh implements ModInitializer {
     public static final String MOD_ID = "heavenonhigh";
 	//public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	// Create a custom group tab
+	String group1ID = "pink_garnet_items_group";
+	String group1Name = "itemgroup.heavenonhigh.pink_garnet_items_group";
+	RegistryKey<ItemGroup> group1Key;
+
+	// Create a custom block
+	String block1ID = "pink_garnet_block";
+	Block block1Settings = new Block(AbstractBlock.Settings
+			.create()
+			.strength(4f)
+			.requiresTool()
+			.sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	List<RegistryKey<ItemGroup>> blockGroups = new ArrayList<>(List.of(
+
+	));
+
+
+
+//	String block2ID = "raw_pink_garnet_block";
+//	Block block2Settings = new Block(AbstractBlock.Settings
+//				.create()
+//				.strength(4f)
+//				.requiresTool()
+//				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
 
 
 	public void onInitialize() {
-		ItemGroupTab group1 = new ItemGroupTab("pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group");
-		RegistryKey<ItemGroup> itemGroup1_key = group1.itemGroup1_key;
+		// set Group
+		group1Key = setGroup(this.group1ID, this.group1Name);
 
-		Ore pinkGarnet = new Ore(
-				"pink_garnet",
-				new Item(new Item.Settings()),
-				itemGroup1_key);
-
-		Ore rawPinkGarnet = new Ore(
-				"raw_pink_garnet",
-				new Item(new Item.Settings()),
-				ItemGroups.INGREDIENTS);
+		blockGroups.add(group1Key);
+		blockGroups.add(ItemGroups.INGREDIENTS);
+		blockGroups.add(ItemGroups.BUILDING_BLOCKS);
 
 
-		Block block1Settings = new Block(AbstractBlock.Settings
-				.create()
-				.strength(4f)
-				.requiresTool()
-				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
+		// Set Item
+		setBlock(this.block1ID , this.block1Settings, this.blockGroups);
+
+
+//		this.pinkGarnet = new Ore(
+//				"pink_garnet",
+//				new Item(new Item.Settings()),
+//				itemGroups);
+//
+//		Ore rawPinkGarnet = new Ore(
+//				"raw_pink_garnet",
+//				new Item(new Item.Settings()),
+//				itemGroups);
+//
+//
+//		Block block2Settings = new Block(AbstractBlock.Settings
+//				.create()
+//				.strength(4f)
+//				.requiresTool()
+//				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
+//		OreBlock rawPinkGarnetBlock = new OreBlock(
+//				"raw_pink_garnet_block",
+//				block2Settings,
+//				new BlockItem(block2Settings, new Item.Settings()),
+//				ItemGroups.BUILDING_BLOCKS
+//		);
+	}
+
+
+	public RegistryKey<ItemGroup> setGroup(String groupID, String groupName) {
+		ItemGroupTab group = new ItemGroupTab(groupID , groupName);
+		return group.getRegistration(); // get group key
+	}
+
+
+
+	public void setBlock(String itemName, Block blockSettings, List<RegistryKey<ItemGroup>> blockGroups) {
 		OreBlock pinkGarnetBlock = new OreBlock(
 				"pink_garnet_block",
-				block1Settings,
-				new BlockItem(block1Settings, new Item.Settings()),
-				ItemGroups.BUILDING_BLOCKS
+				blockSettings,
+				new BlockItem(blockSettings, new Item.Settings()),
+				blockGroups
 		);
 
-
-		Block block2Settings = new Block(AbstractBlock.Settings
-				.create()
-				.strength(4f)
-				.requiresTool()
-				.sounds(BlockSoundGroup.AMETHYST_BLOCK));
-		OreBlock rawPinkGarnetBlock = new OreBlock(
-				"raw_pink_garnet_block",
-				block2Settings,
-				new BlockItem(block2Settings, new Item.Settings()),
-				ItemGroups.BUILDING_BLOCKS
-		);
-
-
-		List<ItemStack> li = new ArrayList<>();
-		li.add(new ItemStack(pinkGarnet.registration));
-		li.add(new ItemStack(rawPinkGarnet.registration));
-		li.add(new ItemStack(pinkGarnetBlock.registration));
-		li.add(new ItemStack(rawPinkGarnetBlock.registration));
-
-		//ItemGroupTab group1 = new ItemGroupTab(li, "pink_garnet_items_group", "itemgroup.heavenonhigh.pink_garnet_items_group", 0);
-		//ItemGroupTab group2 = new ItemGroupTab(li, "pink_garnet_blocks_group", "itemgroup.heavenonhigh.pink_garnet_blocks_group", 2);
+		Block pinkGarnetBlock_registration = pinkGarnetBlock.getRegistration();
+		pinkGarnetBlock.initialize(pinkGarnetBlock_registration, blockGroups);
 	}
 }

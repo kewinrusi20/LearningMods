@@ -13,13 +13,16 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
+
+
 public class Ore {
     public final Item registration;
 
-    public Ore(String id, Item settings, RegistryKey<ItemGroup> itemGroupTab) {
+    public Ore(String id, Item settings, List<RegistryKey<ItemGroup>> groups) {
         this.registration = registerItem(id, settings);
-        registry(this.registration);
-        initialize(this.registration, itemGroupTab);
+        //registry(this.registration);
+        initialize(this.registration, groups);
     }
 
 
@@ -29,22 +32,17 @@ public class Ore {
 
         return registration;
     }
+//    public void registry(Item settings) {
+//        FuelRegistry.INSTANCE.add(settings, 30 * 20);
+//        CompostingChanceRegistry.INSTANCE.add(settings, 0.3f);
+//    }
 
-
-    public void registry(Item settings) {
-        FuelRegistry.INSTANCE.add(settings, 30 * 20);
-        CompostingChanceRegistry.INSTANCE.add(settings, 0.3f);
-    }
-
-
-    public void initialize(Item registration, RegistryKey<ItemGroup> group) {
+    public void initialize(Item registration, List<RegistryKey<ItemGroup>> groups) {
         // Add Item to a Section
-        ItemGroupEvents
-                .modifyEntriesEvent(group)
-                .register((entries) -> entries.add(registration));
-
-        ItemGroupEvents
-                .modifyEntriesEvent(ItemGroups.INGREDIENTS)
-                .register((entries) -> entries.add(registration));
+        for (RegistryKey<ItemGroup> group : groups) {
+            ItemGroupEvents
+                    .modifyEntriesEvent(group)
+                    .register((entries) -> entries.add(registration));
+        }
     }
 }

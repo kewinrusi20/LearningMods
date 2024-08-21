@@ -12,15 +12,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
+
 public class OreBlock {
     public final Block registration;
 
-    public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings, RegistryKey<ItemGroup> itemGroupTab) {
+    public OreBlock(String id, Block blockSettings, BlockItem blockItemSettings, List<RegistryKey<ItemGroup>> groups) {
         this.registration = registerBlock(id, blockSettings);
         Item itemRegistered = registerBlockItem(id, blockItemSettings);
-
-        initialize(registration, itemGroupTab);
-
+        //initialize(registration, groups);
     }
 
 
@@ -40,9 +40,16 @@ public class OreBlock {
     }
 
 
-    public void initialize(Block registration, RegistryKey<ItemGroup> itemGroupTab) {
-        ItemGroupEvents.
-                modifyEntriesEvent(itemGroupTab)
-                .register(entries -> entries.add(registration));
+    public void initialize(Block registration, List<RegistryKey<ItemGroup>> groups) {
+        // Add Item inside a group tab
+        for (RegistryKey<ItemGroup> group : groups) {
+            ItemGroupEvents
+                    .modifyEntriesEvent(group)
+                    .register((entries) -> entries.add(registration));
+        }
+    }
+
+    public Block getRegistration() {
+        return this.registration;
     }
 }
