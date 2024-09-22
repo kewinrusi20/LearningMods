@@ -84,7 +84,6 @@ public class ModBlock {
     }
 
 
-
     public static void registerToGroup(Block registration, List<RegistryKey<ItemGroup>> groups) {
         // Add Item inside a group tab
         for (RegistryKey<ItemGroup> group : groups) {
