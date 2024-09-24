@@ -37,6 +37,13 @@ public class ModItems {
                     .maxCount(1))
     );
 
+    // Item 4
+    public static String pinkGarnetNugget_id = "pink_garnet_nugget";
+    public static Item PING_GARNET_NUGGET = registerItem(
+            pinkGarnetNugget_id,
+            new Item(new Item.Settings())
+    );
+
     public static void mainModItems() {
         // Item 1
 		List<RegistryKey<ItemGroup>> pinkGarnet_groupTab = new ArrayList<>();
@@ -53,12 +60,17 @@ public class ModItems {
 
 
         // Item 3
-        //Registry.register(Registries.ITEM, Identifier.of(HeavenOnHigh.MOD_ID, "healing_item"), HEALING_ITEM);
-
         List<RegistryKey<ItemGroup>> healingItem_groupTab = new ArrayList<>();
         healingItem_groupTab.add(ItemGroups.INGREDIENTS);
         healingItem_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
         registerToGroup(HEALING_ITEM, healingItem_groupTab);
+
+        // Item 4
+        List<RegistryKey<ItemGroup>> pinkGarnetNugget_groupTab = new ArrayList<>();
+        pinkGarnetNugget_groupTab.add(ItemGroups.INGREDIENTS);
+        pinkGarnetNugget_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
+        registerToGroup(PING_GARNET_NUGGET, pinkGarnetNugget_groupTab);
+
     }
 
 
