@@ -17,18 +17,28 @@ import java.util.List;
 public class ModItems {
     // Item 1
     public static String pinkGarnet_id = "pink_garnet";
-    public static Item PINK_GARNET;
+    public static Item PINK_GARNET = registerItem(
+            pinkGarnet_id,
+            new Item(new Item.Settings())
+    );
 
     // Item 2
-    public static Item RAW_PINK_GARNET;
+    public static String rawPinkGarnet_id = "raw_pink_garnet";
+    public static Item RAW_PINK_GARNET = registerItem(
+            rawPinkGarnet_id,
+            new Item(new Item.Settings())
+    );
 
+    // Item 3
+    //public static final Item HEALING_ITEM = new HealingItem(new Item.Settings().maxCount(1));
+    public static Item HEALING_ITEM = registerItem(
+            "healing_item",
+            new HealingItem(new Item.Settings()
+                    .maxCount(1))
+    );
 
     public static void mainModItems() {
         // Item 1
-        PINK_GARNET = registerItem(
-                pinkGarnet_id,
-                new Item(new Item.Settings())
-        );
 		List<RegistryKey<ItemGroup>> pinkGarnet_groupTab = new ArrayList<>();
         pinkGarnet_groupTab.add(ItemGroups.INGREDIENTS);
         pinkGarnet_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
@@ -36,14 +46,19 @@ public class ModItems {
 
 
         // Item 2
-        RAW_PINK_GARNET = registerItem(
-                "raw_pink_garnet",
-                new Item(new Item.Settings())
-        );
-		List<RegistryKey<ItemGroup>> rawPinkGarnet_groupTab = new ArrayList<>();
+        List<RegistryKey<ItemGroup>> rawPinkGarnet_groupTab = new ArrayList<>();
 		rawPinkGarnet_groupTab.add(ItemGroups.INGREDIENTS);
         rawPinkGarnet_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
         registerToGroup(RAW_PINK_GARNET, rawPinkGarnet_groupTab);
+
+
+        // Item 3
+        //Registry.register(Registries.ITEM, Identifier.of(HeavenOnHigh.MOD_ID, "healing_item"), HEALING_ITEM);
+
+        List<RegistryKey<ItemGroup>> healingItem_groupTab = new ArrayList<>();
+        healingItem_groupTab.add(ItemGroups.INGREDIENTS);
+        healingItem_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
+        registerToGroup(HEALING_ITEM, healingItem_groupTab);
     }
 
 
