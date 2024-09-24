@@ -15,14 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
+    // Item 1
+    public static String pinkGarnet_id = "pink_garnet";
     public static Item PINK_GARNET;
+
+    // Item 2
     public static Item RAW_PINK_GARNET;
 
 
     public static void mainModItems() {
         // Item 1
-        PINK_GARNET = initializeItem(
-                "pink_garnet",
+        PINK_GARNET = registerItem(
+                pinkGarnet_id,
                 new Item(new Item.Settings())
         );
 		List<RegistryKey<ItemGroup>> pinkGarnet_groupTab = new ArrayList<>();
@@ -32,7 +36,7 @@ public class ModItems {
 
 
         // Item 2
-        RAW_PINK_GARNET = initializeItem(
+        RAW_PINK_GARNET = registerItem(
                 "raw_pink_garnet",
                 new Item(new Item.Settings())
         );
@@ -44,7 +48,7 @@ public class ModItems {
 
 
 
-    public static Item initializeItem(String id, Item item) {
+    public static Item registerItem(String id, Item item) {
         Identifier idConverted = Identifier.of(HeavenOnHigh.MOD_ID, id);
         Item initializedItem = Registry.register(Registries.ITEM, idConverted, item);
 

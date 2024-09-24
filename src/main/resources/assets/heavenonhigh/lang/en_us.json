@@ -6,5 +6,8 @@
   "block.heavenonhigh.raw_pink_garnet_block": "Raw Pink Garnet Block",
 
   "itemgroup.heavenonhigh.pink_garnet_items_group": "Pink Garnet Items Group",
-  "itemgroup.heavenonhigh.pink_garnet_blocks_group": "Pink Garnet Blocks Group"
+  "itemgroup.heavenonhigh.pink_garnet_blocks_group": "Pink Garnet Blocks Group",
+
+  "block.heavenonhigh.pink_garnet_ore": "Pink Garnet Ore",
+  "block.heavenonhigh.pink_garnet_deepslate_ore": "Pink Garnet Deepslate Ore"
 }
