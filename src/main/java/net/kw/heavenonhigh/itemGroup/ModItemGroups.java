@@ -19,6 +19,12 @@ public class ModItemGroups {
             ModItems.PINK_GARNET
     );
 
+    public final static RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_2 = initializeGroupTab(
+            "spells_group",
+            "itemgroup.heavenonhigh.spells_group",
+            ModItems.HEALING_ITEM
+    );
+
 
     public static RegistryKey<ItemGroup> initializeGroupTab(String id, String groupName, Item icon) {
         Identifier idConverted = Identifier.of(HeavenOnHigh.MOD_ID, id);

@@ -62,7 +62,7 @@ public class ModItems {
         // Item 3
         List<RegistryKey<ItemGroup>> healingItem_groupTab = new ArrayList<>();
         healingItem_groupTab.add(ItemGroups.INGREDIENTS);
-        healingItem_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
+        healingItem_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_2);
         registerToGroup(HEALING_ITEM, healingItem_groupTab);
 
         // Item 4
@@ -70,7 +70,6 @@ public class ModItems {
         pinkGarnetNugget_groupTab.add(ItemGroups.INGREDIENTS);
         pinkGarnetNugget_groupTab.add(ModItemGroups.CUSTOM_ITEM_GROUP_1);
         registerToGroup(PING_GARNET_NUGGET, pinkGarnetNugget_groupTab);
-
     }
 
 
