@@ -18,6 +18,13 @@ public class HealingItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
 
+        // Check if the player is already at full health
+        if (user.getHealth() == user.getMaxHealth()) {
+            // Notify the user that they are already at full health
+            user.sendMessage(Text.literal("You are already at full health!"), true);
+            return new TypedActionResult<>(ActionResult.FAIL, itemStack);
+        }
+
         // Check if the user has enough experience
         int requiredExperience = 5; // Adjust based on how much XP you want to consume
         if (user.totalExperience >= requiredExperience) {
@@ -38,7 +45,5 @@ public class HealingItem extends Item {
             user.sendMessage(Text.literal("Not enough experience!"), true);
             return new TypedActionResult<>(ActionResult.FAIL, itemStack);
         }
-
-
     }
 }
