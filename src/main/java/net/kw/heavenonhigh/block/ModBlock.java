@@ -68,7 +68,7 @@ public class ModBlock {
         // -----------------------------------------------------------------
         // Block 2
         RAW_PINK_GARNEET_BLOCK = registerBlock(
-                pinkGarnetBlockID,
+                rawPinkGarnetBlockID,
                 new Block(AbstractBlock.Settings
                         .create()
                         .strength(4f)
@@ -77,7 +77,7 @@ public class ModBlock {
         );
 
         RAW_PINK_GARNEET_BLOCK_ITEM = registerBlockItem(
-                pinkGarnetBlockID,
+                rawPinkGarnetBlockID,
                 new BlockItem(RAW_PINK_GARNEET_BLOCK, new Item.Settings())
         );
 
